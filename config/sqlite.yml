@@ -1,0 +1,20 @@
+Default: &defaults
+  database: style-guidance.sqlite3
+  poolsize: 10
+
+Development:
+  <<: *defaults
+
+Testing:
+  database: style-guidance_test.sqlite3
+  <<: *defaults
+
+Staging:
+  database: style-guidance_staging.sqlite3
+  poolsize: 100
+  <<: *defaults
+
+Production:
+  database: style-guidance_production.sqlite3
+  poolsize: 100
+  <<: *defaults
