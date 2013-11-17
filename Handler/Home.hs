@@ -37,3 +37,14 @@ sampleForm :: Form (Maybe FileInfo, Text)
 sampleForm = renderDivs $ (,)
     <$> fileAFormOpt "Choose a file"
     <*> areq textField "What's on the file?" Nothing
+
+
+hasFile :: Maybe (Maybe FileInfo, Text) -> Bool
+hasFile Nothing = False
+hasFile (Just (Nothing, _)) = False
+hasFile (Just (Just _, _)) = True
+
+hasLink :: Maybe (Maybe FileInfo, Text) -> Bool
+hasLink Nothing = False
+hasLink (Just (Nothing, _)) = True
+hasLink (Just (Just _, _)) = False
