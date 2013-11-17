@@ -18,15 +18,15 @@
 
   <li>
     A Widget's Html, Css and Javascript are separated in three files with the #
-    \<em>.hamlet</em>, <em>.lucius</em> and <em>.julius</em> extensions. 
+    \<em>.hamlet</em>, <em>.lucius</em> and <em>.julius</em> extensions.
 
   <li ##{aDomId}>If you had javascript enabled then you wouldn't be seeing this.
-    
+
   <li #form>
     This is an example trivial Form. Read the #
     \<a href="http://www.yesodweb.com/book/forms">Forms chapter</a> #
     on the yesod book to learn more about them.
-    $maybe (info,con) <- submission
+    $maybe (Just info,con) <- submission
       <div .message>
         Your file's type was <em>#{fileContentType info}</em>. You say it has: <em>#{con}</em>
     <form method=post action=@{HomeR}#form enctype=#{formEnctype}>

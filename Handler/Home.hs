@@ -13,7 +13,7 @@ import Import
 getHomeR :: Handler Html
 getHomeR = do
     (formWidget, formEnctype) <- generateFormPost sampleForm
-    let submission = Nothing :: Maybe (FileInfo, Text)
+    let submission = Nothing :: Maybe (Maybe FileInfo, Text)
         handlerName = "getHomeR" :: Text
     defaultLayout $ do
         aDomId <- newIdent
@@ -30,10 +30,10 @@ postHomeR = do
 
     defaultLayout $ do
         aDomId <- newIdent
-        setTitle "Welcome To Yesod!"
+        setTitle "Thanks for submitting!"
         $(widgetFile "homepage")
 
-sampleForm :: Form (FileInfo, Text)
+sampleForm :: Form (Maybe FileInfo, Text)
 sampleForm = renderDivs $ (,)
-    <$> fileAFormReq "Choose a file"
+    <$> fileAFormOpt "Choose a file"
     <*> areq textField "What's on the file?" Nothing
